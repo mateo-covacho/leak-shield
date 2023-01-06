@@ -1,4 +1,4 @@
-#Leak shield
+# Leak shield
 
 LeakShield is a content miss-distribution detection system that allows content creators and managers to protect their content and revenue from unauthorized access or distribution. By uniquely marking each user's version of the content with an identifiable mark, LeakShield can help identify and respond to leaks or unauthorized copies of the content.
 
