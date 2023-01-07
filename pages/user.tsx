@@ -3,11 +3,12 @@ import { getSession, signOut } from "next-auth/react";
 import "@blueprintjs/core/lib/css/blueprint.css";
 import "@blueprintjs/icons/lib/css/blueprint-icons.css";
 // gets a prop from getServerSideProps
-function User({ user }) {
+function User({ user }: { user: any }) {
   return (
     <div>
       <h4>User session:</h4>
       <pre>{JSON.stringify(user, null, 2)}</pre>
+      {/* @ts-ignore */}
       <Button icon='log-in' intent='danger' onClick={() => signOut({ redirect: "/signin" })}>
         Sign out
       </Button>
@@ -15,7 +16,7 @@ function User({ user }) {
   );
 }
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps(context: object) {
   const session = await getSession(context);
 
   // redirect if not authenticated

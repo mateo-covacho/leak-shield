@@ -8,7 +8,16 @@ import styles from "../styles/post.module.css";
 // Components
 import Image from "next/image";
 
-const Post = (props) => {
+//create a type for the props for the Post component
+type PostProps = {
+  img: string;
+  caption: string;
+  usr: {
+    address: string;
+  };
+};
+
+const Post = (props: PostProps) => {
   return (
     <div className={`${styles.container} card mx-auto mb-4`}>
       {/* <Image src={props.img} className='card-img-top' alt='card-img-top' /> */}

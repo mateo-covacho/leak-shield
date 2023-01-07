@@ -16,7 +16,7 @@ import { SMALL } from "@blueprintjs/core/lib/esm/common/classes";
 import { Stint_Ultra_Expanded } from "@next/font/google";
 import Post from "../components/Post";
 
-function User({ user }) {
+function User({ user }: { user: any }) {
   let posts = [
     {
       img: "https://i.ibb.co/Qm15CK1/mathiuscov9167-A-happy-beaver-in-an-office-with-glasses-and-a-s-c6b95bc7-904f-404f-96b9-3979e008bfec.png",
@@ -42,88 +42,91 @@ function User({ user }) {
   console.log("user", user);
   const [search, changeSearch] = useState("");
   return (
-    <div className={` container ${styles.main} `} style={{ width: "100vw", height: "100vh" }}>
-      <Head>
-        <title>LeakShield</title>
-        <meta
-          name='description'
-          content="LeakShield is a powerful tool for content creators and managers to detect and respond to leaks and unauthorized distribution of their content. With LeakShield, you can protect your content and revenue by uniquely marking each user's version of the content with an identifiable mark."
-        />
-        <meta name='viewport' content='width=device-width, initial-scale=1' />
-        <link rel='icon' href='/favicon.ico' />
-      </Head>
-      <Navbar style={{ display: "flex", alignContent: "center", justifyContent: "center" }} className={styles.navbar}>
-        <Navbar.Heading color='m-auto'>LeakShield</Navbar.Heading>
+    <>
+      <Navbar style={{ display: "flex", alignContent: "center", justifyContent: "center", width: "100vw" }} className={`${styles.navbar} mt-5 `}>
+        <Navbar.Heading color='m-auto'>
+          <img src='/logo.png' className='m-auto' height={"50px"} />
+        </Navbar.Heading>
       </Navbar>
-      <br />
-      <div className='row  align-items-start'>
-        <div className='col-2' style={{ height: "100%" }}>
-          <div className='row'>
-            <Link href={"/home"} className=' '>
-              <Button className='bp4-minimal ' large={true}>
-                <Icon className='me-2' icon='home' size={25} />
-                Home
-              </Button>
-            </Link>
-          </div>
-          <div className='row'>
-            <Link href={"/user"} className=' '>
-              <Button className='bp4-minimal ' large={true}>
-                <Icon className='me-2' icon='user' size={25} />
-                Profile
-              </Button>
-            </Link>
-          </div>
-          <div className='row'>
-            <Link href={"/user"} className=' '>
-              <Button className='bp4-minimal ' large={true}>
-                <Icon className='me-2' icon='send-message' size={25} />
-                Messages
-              </Button>
-            </Link>
-          </div>
-          <div className='row'>
-            <Link href={"/user"} className=' '>
-              <Button className='bp4-minimal ' large={true}>
-                <Icon className='me-2' icon='notifications' size={25} />
-                Notifications
-              </Button>
-            </Link>
-          </div>
-          <div className='row'>
-            <Link href={"/user"} className=' '>
-              <Button className='bp4-minimal ' large={true}>
-                <Icon className='me-2' icon='bookmark' size={25} />
-                Saved
-              </Button>
-            </Link>
-          </div>
-        </div>
-        <div className='col-4' style={{ height: "100%" }}>
-          {posts.map((post) => {
-            return <Post img={post.img} caption={post.caption} usr={user} />;
-          })}
-        </div>
-        <div className='col-2' style={{ height: "100%" }}>
-          <InputGroup
-            type='tecxt'
-            asyncControl={true}
-            disabled={false}
-            leftIcon='search'
-            placeholder='Search'
-            small={false}
-            onChange={(e) => changeSearch(e.target.value)}
-            value={search}
-
-            // rightElement={<Spinner size={IconSize.STANDARD} />}
+      <div className={` container ${styles.main} mx-auto `} style={{ width: "100vw", height: "100vh" }}>
+        <Head>
+          <title>LeakShield</title>
+          <meta
+            name='description'
+            content="LeakShield is a powerful tool for content creators and managers to detect and respond to leaks and unauthorized distribution of their content. With LeakShield, you can protect your content and revenue by uniquely marking each user's version of the content with an identifiable mark."
           />
+          <meta name='viewport' content='width=device-width, initial-scale=1' />
+          <link rel='icon' href='/favicon.ico' />
+        </Head>
+        <br />
+        <div className='row  align-items-start'>
+          <div className='col-2' style={{ height: "100%" }}>
+            <div className='row'>
+              <Link href={"/home"} className=' '>
+                <Button className='bp4-minimal ' icon='home' large={true}>
+                  {/* <Icon className='me-2'  size={25} /> */}
+                  Home
+                </Button>
+              </Link>
+            </div>
+            <div className='row'>
+              <Link href={"/user"} className=' '>
+                <Button className='bp4-minimal ' icon='user' large={true}>
+                  {/* <Icon className='me-2'  size={25} /> */}
+                  Profile
+                </Button>
+              </Link>
+            </div>
+            <div className='row'>
+              <Link href={"/user"} className=' '>
+                <Button className='bp4-minimal' icon='send-message' large={true}>
+                  {/* <Icon className='me-2'  size={25} /> */}
+                  Messages
+                </Button>
+              </Link>
+            </div>
+            <div className='row'>
+              <Link href={"/user"} className=' '>
+                <Button className='bp4-minimal' icon='notifications' large={true}>
+                  {/* <Icon className='me-2'  size={25} /> */}
+                  Notifications
+                </Button>
+              </Link>
+            </div>
+            <div className='row'>
+              <Link href={"/user"} className=' '>
+                <Button className='bp4-minimal' icon='bookmark' large={true}>
+                  {/* <Icon className='me-2'  size={25} /> */}
+                  Saved
+                </Button>
+              </Link>
+            </div>
+          </div>
+          <div className='col-4' style={{ height: "100%" }}>
+            {posts.map((post) => {
+              return <Post key={post.upload} img={post.img} caption={post.caption} usr={user} />;
+            })}
+          </div>
+          <div className='col-2' style={{ height: "100%" }}>
+            <InputGroup
+              type='tecxt'
+              asyncControl={true}
+              disabled={false}
+              placeholder='Search'
+              small={false}
+              onChange={(e) => changeSearch(e.target.value)}
+              value={search}
+
+              // rightElement={<Spinner size={IconSize.STANDARD} />}
+            />
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps(context: any) {
   const session = await getSession(context);
   console.log(context);
   // redirect if not authenticated

@@ -1,11 +1,10 @@
 import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "@next/font/google";
-import Signinbutton from "../components/Signinbutton";
 import "@blueprintjs/core/lib/css/blueprint.css";
 import "@blueprintjs/icons/lib/css/blueprint-icons.css";
 import { getSession } from "next-auth/react";
-export default function Home() {
+export default function Home({ user }: { user: any }) {
   return (
     <>
       <Head>
@@ -20,10 +19,10 @@ export default function Home() {
           href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css'
           rel='stylesheet'
           integrity='sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC'
-          crossorigin='anonymous'
+          crossOrigin='anonymous'
         />
       </Head>
-      <main className={styles.main}>
+      <main>
         <h1>Leak shield</h1>
         <h2>Detect who is leaking your [paltaforms] content</h2>
       </main>
@@ -31,7 +30,7 @@ export default function Home() {
   );
 }
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps(context: any) {
   const session = await getSession(context);
 
   // redirect if not authenticated
@@ -52,6 +51,6 @@ export async function getServerSideProps(context) {
   }
 
   return {
-    props: { user: session.user },
+    props: { user: session["user"] },
   };
 }

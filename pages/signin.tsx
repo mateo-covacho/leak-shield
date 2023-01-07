@@ -3,7 +3,6 @@ import { signIn } from "next-auth/react";
 import { useAccount, useConnect, useSignMessage, useDisconnect } from "wagmi";
 import { useRouter } from "next/router";
 import { useAuthRequestChallengeEvm } from "@moralisweb3/next";
-import { BUTTON } from "@blueprintjs/core/lib/esm/common/classes";
 import { Button } from "@blueprintjs/core";
 
 import Head from "next/head";
@@ -24,12 +23,13 @@ function SignIn() {
     }
 
     const { account, chain } = await connectAsync({ connector: new MetaMaskConnector() });
-
+    //@ts-ignore
     const { message } = await requestChallengeAsync({ address: account, chainId: chain.id });
-
+    
     const signature = await signMessageAsync({ message });
-
+    
     // redirect user after success authentication to '/user' page
+    //@ts-ignore
     const { url } = await signIn("moralis-auth", { message, signature, redirect: false, callbackUrl: "/home" });
     /**
      * instead of using signIn(..., redirect: "/user")
@@ -52,7 +52,7 @@ function SignIn() {
           href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css'
           rel='stylesheet'
           integrity='sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC'
-          crossorigin='anonymous'
+          crossOrigin='anonymous'
         />
       </Head>
       <div className='container '>
