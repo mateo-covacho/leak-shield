@@ -3,7 +3,7 @@ import { getSession, signOut } from "next-auth/react";
 import React, { useState } from "react";
 
 // Styles
-import styles from "../styles/post.module.css";
+import styles from "../styles/Post.module.css";
 
 // Components
 import Image from "next/image";
