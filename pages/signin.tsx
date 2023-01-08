@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import { useAuthRequestChallengeEvm } from "@moralisweb3/next";
 import { Button } from "@blueprintjs/core";
 
+import Image from "next/image";
 import Head from "next/head";
 import "@blueprintjs/core/lib/css/blueprint.css";
 
@@ -25,9 +26,9 @@ function SignIn() {
     const { account, chain } = await connectAsync({ connector: new MetaMaskConnector() });
     //@ts-ignore
     const { message } = await requestChallengeAsync({ address: account, chainId: chain.id });
-    
+
     const signature = await signMessageAsync({ message });
-    
+
     // redirect user after success authentication to '/user' page
     //@ts-ignore
     const { url } = await signIn("moralis-auth", { message, signature, redirect: false, callbackUrl: "/home" });
@@ -57,11 +58,11 @@ function SignIn() {
       </Head>
       <div className='container '>
         <div className='row'>
-          <h3>Web3 Authentication</h3>
+          <img src='/logo.png' alt='LeakShield' />
         </div>
         <div className='row'>
-          <Button icon='log-in' intent='primary' onClick={handleAuth}>
-            Authenticate via Metamask
+          <Button icon='log-in' intent='primary' className='col-5' onClick={handleAuth}>
+            Sign in with Metamask
           </Button>
         </div>
       </div>

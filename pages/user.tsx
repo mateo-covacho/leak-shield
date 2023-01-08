@@ -6,7 +6,7 @@ import "@blueprintjs/icons/lib/css/blueprint-icons.css";
 function User({ user }: { user: any }) {
   return (
     <div>
-      <h4>User session:</h4>
+      <h4>User:</h4>
       <pre>{JSON.stringify(user, null, 2)}</pre>
       {/* @ts-ignore */}
       <Button icon='log-in' intent='danger' onClick={() => signOut({ redirect: "/signin" })}>
