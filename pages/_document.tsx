@@ -1,4 +1,5 @@
 import { Html, Head, Main, NextScript } from "next/document";
+
 export default function Document() {
   return (
     <Html lang='en'>
@@ -12,6 +13,7 @@ export default function Document() {
           integrity='sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC'
           crossOrigin='anonymous'
         />
+
       </Head>
       <body style={{ height: "100vh", width: "100vw" }}>
         <Main />
