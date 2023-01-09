@@ -101,6 +101,12 @@ function User({ user }: { user: any }) {
                 </Button>
               </Link>
             </div>
+            <div className='row'>
+              <Button className='' intent='primary' icon='add' large={true}>
+                {/* <Icon className='me-2'  size={25} /> */}
+                New post
+              </Button>
+            </div>
           </div>
           <div className='col-4' style={{ height: "100%" }}>
             {posts.map((post) => {
