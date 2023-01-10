@@ -42,8 +42,7 @@ body {
 }
 
 html {
-  background: rgb(255, 255, 255);
-  background: linear-gradient(130deg, rgba(255, 255, 255, 1) 0%, rgba(255, 172, 186, 1) 100%);
+  background:white;
 
   background-attachment: fixed;
 }
