@@ -5,7 +5,7 @@ import Script from "next/script"
 import { createClient, configureChains, WagmiConfig, goerli } from "wagmi";
 import { publicProvider } from "wagmi/providers/public";
 import { SessionProvider } from "next-auth/react";
-import ReactGA from 'react-ga;
+import ReactGA from 'react-ga';
 import { useEffect } from "react";
 
 const { provider, webSocketProvider } = configureChains([goerli], [publicProvider()]);

@@ -79,7 +79,7 @@ function User({ user }: { user: any }) {
             </div>
             <div className='row'>
               <Link href={"/user"} className=' '>
-                <Button className={` bp4-minimal pb-3 ${ styles.whitetext}`} icon='send-message' large={true}>
+                <Button className={` bp4-minimal pb-3 ${styles.whitetext}`} icon='send-message' large={true}>
                   {/* <Icon className='me-2'  size={25} /> */}
                   Messages
                 </Button>
@@ -87,7 +87,7 @@ function User({ user }: { user: any }) {
             </div>
             <div className='row'>
               <Link href={"/user"} className=' '>
-                <Button className={` bp4-minimal pb-3 ${ styles.whitetext}`} icon='notifications' large={true}>
+                <Button className={` bp4-minimal pb-3 ${styles.whitetext}`} icon='notifications' large={true}>
                   {/* <Icon className='me-2'  size={25} /> */}
                   Notifications
                 </Button>
@@ -95,14 +95,16 @@ function User({ user }: { user: any }) {
             </div>
             <div className='row'>
               <Link href={"/user"} className=' '>
-                <Button className={` bp4-minimal pb-3 ${ styles.whitetext}`} icon='bookmark' large={true}>
+                <Button className={` bp4-minimal pb-3 ${styles.whitetext}`} icon='bookmark' large={true}>
                   {/* <Icon className='me-2'  size={25} /> */}
                   Saved
                 </Button>
               </Link>
             </div>
             <div className='row'>
-              <Button className={`${ styles.whitetext}`} intent='primary' icon='add' large={true}>
+              <Button className={`${styles.whitetext}`} intent='primary' icon='add' large={true} onClick={() => {
+                
+              }}>
                 {/* <Icon className='me-2'  size={25} /> */}
                 New post
               </Button>
