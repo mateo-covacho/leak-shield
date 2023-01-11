@@ -63,7 +63,7 @@ function User({ user }: { user: any }) {
           <div className='col-2' style={{ height: "100%" }}>
             <div className='row'>
               <Link href={"/home"} className=' '>
-                <Button className={` bp4-minimal ${styles.whitetext} `} icon='home' large={true}>
+                <Button className={` bp4-minimal pb-3 ${styles.whitetext} `} icon='home' large={true}>
                   {/* <Icon className='me-2'  size={25} /> */}
                   Home
                 </Button>
@@ -71,7 +71,7 @@ function User({ user }: { user: any }) {
             </div>
             <div className='row'>
               <Link href={"/user"} className=' '>
-                <Button className={` bp4-minimal ${styles.whitetext} `} icon='user' large={true}>
+                <Button className={` bp4-minimal pb-3 ${styles.whitetext} `} icon='user' large={true}>
                   {/* <Icon className='me-2'  size={25} /> */}
                   Profile
                 </Button>
@@ -79,7 +79,7 @@ function User({ user }: { user: any }) {
             </div>
             <div className='row'>
               <Link href={"/user"} className=' '>
-                <Button className={` bp4-minimal ${ styles.whitetext}`} icon='send-message' large={true}>
+                <Button className={` bp4-minimal pb-3 ${ styles.whitetext}`} icon='send-message' large={true}>
                   {/* <Icon className='me-2'  size={25} /> */}
                   Messages
                 </Button>
@@ -87,7 +87,7 @@ function User({ user }: { user: any }) {
             </div>
             <div className='row'>
               <Link href={"/user"} className=' '>
-                <Button className={` bp4-minimal ${ styles.whitetext}`} icon='notifications' large={true}>
+                <Button className={` bp4-minimal pb-3 ${ styles.whitetext}`} icon='notifications' large={true}>
                   {/* <Icon className='me-2'  size={25} /> */}
                   Notifications
                 </Button>
@@ -95,7 +95,7 @@ function User({ user }: { user: any }) {
             </div>
             <div className='row'>
               <Link href={"/user"} className=' '>
-                <Button className={` bp4-minimal ${ styles.whitetext}`} icon='bookmark' large={true}>
+                <Button className={` bp4-minimal pb-3 ${ styles.whitetext}`} icon='bookmark' large={true}>
                   {/* <Icon className='me-2'  size={25} /> */}
                   Saved
                 </Button>
