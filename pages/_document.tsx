@@ -13,14 +13,6 @@ export default function Document() {
           integrity='sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC'
           crossOrigin='anonymous'
         />
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-45C7JW50VB"></script>
-        <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-
-          gtag('config', 'G-45C7JW50VB');
-        </script>
       </Head>
       <body style={{ height: "100vh", width: "100vw" }}>
         <Main />

@@ -18,7 +18,6 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <WagmiConfig client={client}>
       <SessionProvider session={pageProps.session} refetchInterval={0}>
-
         <Component {...pageProps} />
       </SessionProvider>
     </WagmiConfig>
