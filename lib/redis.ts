@@ -40,11 +40,3 @@ export async function createPost(data: Data) {
 
   return id;
 }
-
-Estimado Sr. Salgado,
-
-He recibido su correo y he completado y firmado la solicitud de admisión (adjunto en PDF). También incluyo mi DNI, Pasaporte o NIE. Aún no tengo las notas de 2º de SMR. Estoy disponible para agendar una entrevista con el Coordinador del Ciclo de lunes a jueves después de las 7pm y los viernes y fin de semana estoy completamente libre. Por favor háganme saber si necesitan algo más.
-
-Atentamente,
-
-Mateo.
