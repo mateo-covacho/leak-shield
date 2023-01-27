@@ -1,6 +1,7 @@
 // Hooks
 import { getSession, signOut } from "next-auth/react";
 import { useState } from "react";
+import { createPost } from "../lib/redis";
 
 // Components
 import Head from "next/head";
@@ -19,27 +20,27 @@ import Post from "../components/Post";
 function User({ user }: { user: any }) {
   let posts = [
     {
-      img: "https://i.ibb.co/Qm15CK1/mathiuscov9167-A-happy-beaver-in-an-office-with-glasses-and-a-s-c6b95bc7-904f-404f-96b9-3979e008bfec.png",
+      media: "https://i.ibb.co/Qm15CK1/mathiuscov9167-A-happy-beaver-in-an-office-with-glasses-and-a-s-c6b95bc7-904f-404f-96b9-3979e008bfec.png",
       author: "business beaver",
-      upload: 1673011871,
+      created: 1673011871,
       caption: "Just another day at the office, working hard and building my career as a #damlawyer 🐀💼 #lawfirmlife #beaverbeliever",
     },
     {
-      img: "https://i.ibb.co/L9wMj6M/mathiuscov9167-A-beaver-with-and-engineering-hardhat-and-a-suit-45ddd63f-951f-4913-9c04-6a2bc13a5699.png",
+      media: "https://i.ibb.co/L9wMj6M/mathiuscov9167-A-beaver-with-and-engineering-hardhat-and-a-suit-45ddd63f-951f-4913-9c04-6a2bc13a5699.png",
       author: "Engineer beaver",
-      upload: 1673012045,
+      created: 1673012045,
       caption: "Building a strong foundation for the community one dam project at a time 🐀🏗️ #civilengineering #beaverbuilder #damgoodengineer",
     },
     {
-      img: "https://i.ibb.co/bbWBK0b/Midjourneyimg.png",
+      media: "https://i.ibb.co/bbWBK0b/Midjourneyimg.png",
       author: "Stylish macaque",
-      upload: 1673012143,
+      created: 1673012143,
       caption:
         "As I sit here swinging from my tree, I can't help but think about the monkey business of life. One thing is certain, it's a jungle out there! #macaque #monkeythoughts #lifeinthejungle",
     },
   ];
 
-  console.log("user", user);
+  console.log({ user });
   const [search, changeSearch] = useState("");
   return (
     <>
@@ -102,9 +103,22 @@ function User({ user }: { user: any }) {
               </Link>
             </div>
             <div className='row'>
-              <Button className={`${styles.whitetext}`} intent='primary' icon='add' large={true} onClick={() => {
-                
-              }}>
+              <Button
+                className={`${styles.whitetext}`}
+                intent='primary'
+                icon='add'
+                large={true}
+                onClick={() => {
+                  createPost({
+                    media:
+                      "https://i.ibb.co/L9wMj6M/mathiuscov9167-A-beaver-with-and-engineering-hardhat-and-a-suit-45ddd63f-951f-4913-9c04-6a2bc13a5699.png",
+                    author: "Engineer beaver",
+                    created: 1673012045,
+                    caption:
+                      "Building a strong foundation for the community one dam project at a time 🐀🏗️ #civilengineering #beaverbuilder #damgoodengineer",
+                  });
+                }}
+              >
                 {/* <Icon className='me-2'  size={25} /> */}
                 New post
               </Button>
@@ -112,7 +126,7 @@ function User({ user }: { user: any }) {
           </div>
           <div className='col-4' style={{ height: "100%" }}>
             {posts.map((post) => {
-              return <Post key={post.upload} img={post.img} caption={post.caption} usr={user} />;
+              return <Post key={post.created} img={post.media} caption={post.caption} usr={user} />;
             })}
           </div>
           <div className='col-2' style={{ height: "100%" }}>
@@ -136,7 +150,7 @@ function User({ user }: { user: any }) {
 
 export async function getServerSideProps(context: any) {
   const session = await getSession(context);
-  console.log(context);
+  // console.log(context);
   // redirect if not authenticated
   if (!session) {
     return {
