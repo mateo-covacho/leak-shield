@@ -1,7 +1,6 @@
 // Hooks
 import { getSession, signOut } from "next-auth/react";
 import { useState } from "react";
-import { createPost } from "../lib/redis";
 
 // Components
 import Head from "next/head";
@@ -40,7 +39,7 @@ function User({ user }: { user: any }) {
     },
   ];
 
-  console.log({ user });
+  // console.log({ user });
   const [search, changeSearch] = useState("");
   return (
     <>
@@ -108,15 +107,22 @@ function User({ user }: { user: any }) {
                 intent='primary'
                 icon='add'
                 large={true}
-                onClick={() => {
-                  createPost({
-                    media:
-                      "https://i.ibb.co/L9wMj6M/mathiuscov9167-A-beaver-with-and-engineering-hardhat-and-a-suit-45ddd63f-951f-4913-9c04-6a2bc13a5699.png",
-                    author: "Engineer beaver",
-                    created: 1673012045,
-                    caption:
-                      "Building a strong foundation for the community one dam project at a time 🐀🏗️ #civilengineering #beaverbuilder #damgoodengineer",
+                onClick={async () => {
+                  const res = await fetch("/api/db", {
+                    body: JSON.stringify({
+                      media:
+                        "https://i.ibb.co/L9wMj6M/mathiuscov9167-A-beaver-with-and-engineering-hardhat-and-a-suit-45ddd63f-951f-4913-9c04-6a2bc13a5699.png",
+                      author: "Engineer beaver",
+                      created: 1673012045,
+                      caption:
+                        "Building a strong foundation for the community one dam project at a time 🐀🏗️ #civilengineering #beaverbuilder #damgoodengineer",
+                    }),
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                    method: "POST",
                   });
+                  console.log({ res });
                 }}
               >
                 {/* <Icon className='me-2'  size={25} /> */}

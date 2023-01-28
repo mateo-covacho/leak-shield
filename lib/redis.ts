@@ -1,14 +1,16 @@
 import { Client, Entity, Schema, Repository } from "redis-om";
 import { Url } from "url";
+
 const client = new Client();
 async function connect() {
   console.log("Will connect to redis");
   console.log({ client });
   if (!client.isOpen()) {
     console.log("Attempting to connect to redis");
-    const url = new URL("redis://default:0dOoaiVQvwRtRRl9OQVqLD8XmhnRR6HA@redis-15206.c269.eu-west-1-3.ec2.cloud.redislabs.com:15206");
-    console.log({ url });
-    const res = await client.open("redis://default:0dOoaiVQvwRtRRl9OQVqLD8XmhnRR6HA@redis-15206.c269.eu-west-1-3.ec2.cloud.redislabs.com:15206");
+    // const url = new URL("redis-15206.c269.eu-west-1-3.ec2.cloud.redislabs.com:15206");
+    // console.log({ url });
+    //@ts-ignore
+    const res = await client.open(process.env.REDIS_URL);
     console.log({ res });
   }
 }
