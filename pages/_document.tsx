@@ -13,6 +13,11 @@ export default function Document() {
           integrity='sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC'
           crossOrigin='anonymous'
         />
+        {/* bootstrap */}
+        <script src='https://cdn.jsdelivr.net/npm/react/umd/react.production.min.js' crossOrigin='anonymous'></script>
+        <script src='https://cdn.jsdelivr.net/npm/react-dom/umd/react-dom.production.min.js' crossOrigin='anonymous'></script>
+        <script src='https://cdn.jsdelivr.net/npm/react-bootstrap@next/dist/react-bootstrap.min.js' crossOrigin='anonymous'></script>
+        <script>var Alert = ReactBootstrap.Alert;</script>
       </Head>
       <body style={{ height: "100vh", width: "100vw" }}>
         <Main />

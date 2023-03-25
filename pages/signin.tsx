@@ -23,12 +23,18 @@ function SignIn() {
       await disconnectAsync();
     }
 
-    const { account, chain } = await connectAsync({ connector: new MetaMaskConnector() });
+    try {
+      var { account, chain } = await connectAsync({ connector: new MetaMaskConnector() });
+    } catch (e) {
+      console.log(e);
+      alert("Please connect to Metamask");
+      return;
+    }
+
     //@ts-ignore
     const { message } = await requestChallengeAsync({ address: account, chainId: chain.id });
 
     const signature = await signMessageAsync({ message });
-
     // redirect user after success authentication to '/user' page
     //@ts-ignore
     const { url } = await signIn("moralis-auth", { message, signature, redirect: false, callbackUrl: "/home" });
@@ -61,7 +67,14 @@ function SignIn() {
           <img src='/logo.png' alt='LeakShield' />
         </div>
         <div className='row'>
-          <Button icon='log-in' intent='primary' className='col-5' onClick={handleAuth}>
+          <Button
+            icon='log-in'
+            intent='primary'
+            className='col-5'
+            onClick={() => {
+              handleAuth();
+            }}
+          >
             Sign in with Metamask
           </Button>
         </div>
